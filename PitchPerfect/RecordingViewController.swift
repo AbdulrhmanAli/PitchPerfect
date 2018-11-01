@@ -30,9 +30,7 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate {
     
 
     @IBAction func recordAudio(_ sender: Any) {
-        stopRecordingButton.isEnabled = true
-        recordingButton.isEnabled = false
-        recordingLabel.text = "Tap to finish recording"
+        setup(isRecording: true)
         
         
         //to get the directory path
@@ -59,9 +57,7 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func stopRecording(_ sender: Any) {
-        stopRecordingButton.isEnabled = false
-        recordingButton.isEnabled = true
-        recordingLabel.text = "Tap to start recording"
+        setup(isRecording: false)
         
         audioRecorder.stop()
         try! AVAudioSession.sharedInstance().setActive(false)
@@ -83,6 +79,19 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate {
             let playSoundsVC = segue.destination as! PlayingViewController
             let recordedAudioURL = sender as! URL
             playSoundsVC.recordedAudioURL = recordedAudioURL
+        }
+    }
+    
+    func setup(isRecording: Bool) {
+        if isRecording {
+            recordingLabel.text = "Tap to finish recording"
+            stopRecordingButton.isEnabled = true
+            recordingButton.isEnabled = false
+        }
+        else {
+            recordingLabel.text = "Tap to start recording"
+            recordingButton.isEnabled = true
+            stopRecordingButton.isEnabled = false
         }
     }
     
