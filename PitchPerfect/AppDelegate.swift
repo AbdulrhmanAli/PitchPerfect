@@ -2,8 +2,7 @@
 //  AppDelegate.swift
 //  PitchPerfect
 //
-//  Created by Bashooora on 19/02/1440 AH.
-//  Copyright © 1440 Bashooora. All rights reserved.
+//  Copyright © 2018 Bashayer. All rights reserved.
 //
 
 import UIKit
